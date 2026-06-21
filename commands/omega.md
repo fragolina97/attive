@@ -102,6 +102,16 @@ Completeness ✓ | Cross-reference ✓ | No-ambiguity ✓ | Edge-cases (≥5) �
     └── [P3] GLOSSARIO.md
 ```
 
+### Inizializzazione Visibile (Project)
+```
+# OMEGA — INIZIALIZZAZIONE
+## Architettura: [titolo]
+## Complessità: [Bassa/Media/Alta/Ultra]
+## File KB stimati: [N]
+## Workflow identificati: [N]
+## Stato: ✅ Generazione in corso...
+```
+
 ### Destinazioni di Salvataggio (Project)
 1. `output/<nome>/` → copia di lavoro (eliminabile)
 2. `contesto/<nome>/` → archivio permanente
@@ -124,11 +134,15 @@ Completeness ✓ | Cross-reference ✓ | No-ambiguity ✓ | Edge-cases (≥5) �
 
 ```
 Logica di ricerca:
-1. L'utente fornisce un nome via $ARGUMENTS
-2. Cerca in Architettatura/ un file il cui nome corrisponde (fuzzy match)
+1. L'utente fornisce un nome via $ARGUMENTS (es. "avvia-nuovo-progetto" o "skill avvia nuovo progetto")
+2. Cerca in Architettatura/ un file il cui nome corrisponde (fuzzy match, ignora maiuscole/trattini/spazi)
 3. Se trovato → leggi il file e usalo come architettura di input
-4. Se non trovato → chiedi all'utente di caricarlo o descrivere l'architettura
+4. Se non trovato → chiedi all'utente: "Non ho trovato un file architettura in Architettatura/ per '[nome]'. Puoi caricarlo o descrivimi direttamente l'architettura?"
 ```
+
+**Formato atteso dei file in `Architettatura/`:**
+- Nomi file: `[Nome Skill o Progetto].md` (es. `Skill Avvia nuovo progetto.md`)
+- Contenuto: qualsiasi formato — testo, Python pseudocode, JSON, schema, descrizione libera
 
 ---
 
