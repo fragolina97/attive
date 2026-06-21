@@ -10,7 +10,7 @@ No,Category,Guideline,Description,Do,Don't,Code Good,Code Bad,Severity,Docs URL
 9,Props,Use spread props,Pass through unknown props,{...$$restProps} on elements,Manual prop forwarding,<button {...$$restProps}>,<button class={$$props.class}>,Low,https://svelte.dev/docs/basic-markup#attributes-and-props
 10,Bindings,Use bind: for two-way binding,Simplified input handling,bind:value for inputs,on:input with manual update,<input bind:value={name}>,<input value={name} on:input={e => name = e.target.value}>,Low,https://svelte.dev/docs/element-directives#bind-property
 11,Bindings,Bind to DOM elements,Reference DOM nodes,bind:this for element reference,querySelector in onMount,<div bind:this={el}>,onMount(() => el = document.querySelector()),Medium,
-12,Bindings,Use bind:group for radios/checkboxes,Simplified group handling,bind:group for radio/checkbox groups,Manual checked handling,"<input type=\"radio\" bind:group={selected}>","<input type=\"radio\" checked={selected === value}>",Low,
+12,Bindings,Use bind:group for radios/checkboxes,Simplified group handling,bind:group for radio/checkbox groups,Manual checked handling,"<input type=""radio"" bind:group={selected}>","<input type=""radio"" checked={selected === value}>",Low,
 13,Events,Use on: for event handlers,Event directive syntax,on:click={handler},addEventListener in onMount,<button on:click={handleClick}>,onMount(() => btn.addEventListener()),Medium,https://svelte.dev/docs/element-directives#on-eventname
 14,Events,Forward events with on:event,Pass events to parent,on:click without handler,createEventDispatcher for DOM events,<button on:click>,"dispatch('click', event)",Low,
 15,Events,Use createEventDispatcher,Custom component events,dispatch for custom events,on:event for custom events,"dispatch('save', { data })",on:save without dispatch,Medium,https://svelte.dev/docs/svelte#createeventdispatcher
@@ -23,12 +23,12 @@ No,Category,Guideline,Description,Do,Don't,Code Good,Code Bad,Severity,Docs URL
 22,Stores,Use derived for computed stores,Combine or transform stores,derived for computed values,Manual subscription for derived,"derived(count, $c => $c * 2)",count.subscribe(c => doubled = c * 2),Medium,https://svelte.dev/docs/svelte-store#derived
 23,Stores,Use $ prefix for auto-subscription,Automatic subscribe/unsubscribe,$storeName in components,Manual subscription,{$count},count.subscribe(c => value = c),High,
 24,Stores,Clean up custom subscriptions,Unsubscribe when component destroys,Return unsubscribe from onMount,Leave subscriptions open,onMount(() => store.subscribe(fn)),store.subscribe(fn) in script,High,
-25,Slots,Use slots for composition,Content projection,<slot> for flexible content,Props for all content,<slot>Default</slot>,"<Component content=\"text\"/>",Medium,https://svelte.dev/docs/special-elements#slot
-26,Slots,Name slots for multiple areas,Multiple content areas,"<slot name=\"header\">",Single slot for complex layouts,"<slot name=\"header\"><slot name=\"footer\">",<slot> with complex conditionals,Low,
-27,Slots,Check slot content with $$slots,Conditional slot rendering,$$slots.name for conditional rendering,Always render slot wrapper,"{#if $$slots.footer}<slot name=\"footer\"/>{/if}","<div><slot name=\"footer\"/></div>",Low,
+25,Slots,Use slots for composition,Content projection,<slot> for flexible content,Props for all content,<slot>Default</slot>,"<Component content=""text""/>",Medium,https://svelte.dev/docs/special-elements#slot
+26,Slots,Name slots for multiple areas,Multiple content areas,"<slot name=""header"">",Single slot for complex layouts,"<slot name=""header""><slot name=""footer"">",<slot> with complex conditionals,Low,
+27,Slots,Check slot content with $$slots,Conditional slot rendering,$$slots.name for conditional rendering,Always render slot wrapper,"{#if $$slots.footer}<slot name=""footer""/>{/if}","<div><slot name=""footer""/></div>",Low,
 28,Styling,Use scoped styles by default,Styles scoped to component,<style> for component styles,Global styles for component,:global() only when needed,<style> all global,Medium,https://svelte.dev/docs/svelte-components#style
 29,Styling,Use :global() sparingly,Escape scoping when needed,:global for third-party styling,Global for all styles,:global(.external-lib),<style> without scoping,Medium,
-30,Styling,Use CSS variables for theming,Dynamic styling,CSS custom properties,Inline styles for themes,"style=\"--color: {color}\"","style=\"color: {color}\"",Low,
+30,Styling,Use CSS variables for theming,Dynamic styling,CSS custom properties,Inline styles for themes,"style=""--color: {color}""","style=""color: {color}""",Low,
 31,Transitions,Use built-in transitions,Svelte transition directives,transition:fade for simple effects,Manual CSS transitions,<div transition:fade>,<div class:fade={visible}>,Low,https://svelte.dev/docs/element-directives#transition-fn
 32,Transitions,Use in: and out: separately,Different enter/exit animations,in:fly out:fade for asymmetric,Same transition for both,<div in:fly out:fade>,<div transition:fly>,Low,
 33,Transitions,Add local modifier,Prevent ancestor trigger,transition:fade|local,Global transitions for lists,<div transition:slide|local>,<div transition:slide>,Medium,
@@ -47,8 +47,8 @@ No,Category,Guideline,Description,Do,Don't,Code Good,Code Bad,Severity,Docs URL
 46,Performance,Use {#key} for forced re-render,Reset component state,{#key id} for fresh instance,Manual destroy/create,{#key item.id}<Component/>{/key},on:change={() => component = null},Low,https://svelte.dev/docs/logic-blocks#key
 47,Performance,Avoid unnecessary reactivity,Not everything needs $:,$: only for side effects,$: for simple assignments,$: if (x) console.log(x),$: y = x (when y = x works),Low,
 48,Performance,Use immutable compiler option,Skip equality checks,immutable: true for large lists,Default for all components,<svelte:options immutable/>,Default without immutable,Low,
-49,TypeScript,"Use lang=\"ts\" in script",TypeScript support,"<script lang=\"ts\">",JavaScript for typed projects,"<script lang=\"ts\">",<script> with JSDoc,Medium,https://svelte.dev/docs/typescript
+49,TypeScript,"Use lang=""ts"" in script",TypeScript support,"<script lang=""ts"">",JavaScript for typed projects,"<script lang=""ts"">",<script> with JSDoc,Medium,https://svelte.dev/docs/typescript
 50,TypeScript,Type props with interface,Explicit prop types,interface $$Props for types,Untyped props,interface $$Props { name: string },export let name,Medium,
 51,TypeScript,Type events with createEventDispatcher,Type-safe events,createEventDispatcher<Events>(),Untyped dispatch,createEventDispatcher<{ save: Data }>(),createEventDispatcher(),Medium,
 52,Accessibility,Use semantic elements,Proper HTML in templates,button nav main appropriately,div for everything,<button on:click>,<div on:click>,High,
-53,Accessibility,Add aria to dynamic content,Accessible state changes,aria-live for updates,Silent dynamic updates,"<div aria-live=\"polite\">{message}</div>",<div>{message}</div>,Medium,
+53,Accessibility,Add aria to dynamic content,Accessible state changes,aria-live for updates,Silent dynamic updates,"<div aria-live=""polite"">{message}</div>",<div>{message}</div>,Medium,
