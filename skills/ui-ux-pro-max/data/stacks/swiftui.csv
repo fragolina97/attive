@@ -1,7 +1,7 @@
 No,Category,Guideline,Description,Do,Don't,Code Good,Code Bad,Severity,Docs URL
-1,Views,Use struct for views,SwiftUI views are value types,struct MyView: View,class MyView: View,"struct ContentView: View { var body: some View }",class ContentView: View,High,https://developer.apple.com/documentation/swiftui/view
+1,Views,Use struct for views,SwiftUI views are value types,struct MyView: View,class MyView: View,struct ContentView: View { var body: some View },class ContentView: View,High,https://developer.apple.com/documentation/swiftui/view
 2,Views,Keep views small and focused,Single responsibility for each view,Extract subviews for complex layouts,Large monolithic views,Extract HeaderView FooterView,500+ line View struct,Medium,
-3,Views,Use body computed property,body returns the view hierarchy,var body: some View { },func body() -> some View,"var body: some View { Text(\"Hello\") }",func body() -> Text,High,
+3,Views,Use body computed property,body returns the view hierarchy,var body: some View { },func body() -> some View,"var body: some View { Text(""Hello"") }",func body() -> Text,High,
 4,Views,Prefer composition over inheritance,Compose views using ViewBuilder,Combine smaller views,Inheritance hierarchies,VStack { Header() Content() },class SpecialView extends BaseView,Medium,
 5,State,Use @State for local state,Simple value types owned by view,@State for view-local primitives,@State for shared data,@State private var count = 0,@State var sharedData: Model,High,https://developer.apple.com/documentation/swiftui/state
 6,State,Use @Binding for two-way data,Pass mutable state to child views,@Binding for child input,@State in child for parent data,@Binding var isOn: Bool,$isOn to pass binding,Medium,https://developer.apple.com/documentation/swiftui/binding
@@ -35,12 +35,12 @@ No,Category,Guideline,Description,Do,Don't,Code Good,Code Bad,Severity,Docs URL
 34,Animation,Use .animation modifier,Apply animations to views,.animation(.spring()) on view,Manual animation timing,.animation(.easeInOut),CABasicAnimation equivalent,Low,
 35,Animation,Respect reduced motion,Check accessibility settings,Check accessibilityReduceMotion,Ignore motion preferences,@Environment(\.accessibilityReduceMotion),Always animate regardless,High,
 36,Preview,Use #Preview macro (Xcode 15+),Modern preview syntax,#Preview for view previews,PreviewProvider protocol,#Preview { ContentView() },struct ContentView_Previews: PreviewProvider,Low,
-37,Preview,Create multiple previews,Test different states and devices,Multiple previews for states,Single preview only,"#Preview(\"Light\") { } #Preview(\"Dark\") { }",Single preview configuration,Low,
+37,Preview,Create multiple previews,Test different states and devices,Multiple previews for states,Single preview only,"#Preview(""Light"") { } #Preview(""Dark"") { }",Single preview configuration,Low,
 38,Preview,Use preview data,Dedicated preview mock data,Static preview data,Production data in previews,Item.preview for preview,Fetch real data in preview,Low,
 39,Performance,Avoid expensive body computations,Body should be fast to compute,Precompute in view model,Heavy computation in body,vm.computedValue in body,Complex calculation in body,High,
 40,Performance,Use Equatable views,Skip unnecessary view updates,Equatable for complex views,Default equality for all views,struct MyView: View Equatable,No Equatable conformance,Medium,
 41,Performance,Profile with Instruments,Measure before optimizing,Use SwiftUI Instruments,Guess at performance issues,Profile with Instruments,Optimize without measuring,Medium,
-42,Accessibility,Add accessibility labels,Describe UI elements,.accessibilityLabel for context,Missing labels,".accessibilityLabel(\"Close button\")",Button without label,High,https://developer.apple.com/documentation/swiftui/view/accessibilitylabel(_:)-1d7jv
+42,Accessibility,Add accessibility labels,Describe UI elements,.accessibilityLabel for context,Missing labels,".accessibilityLabel(""Close button"")",Button without label,High,https://developer.apple.com/documentation/swiftui/view/accessibilitylabel(_:)-1d7jv
 43,Accessibility,Support Dynamic Type,Respect text size preferences,Scalable fonts and layouts,Fixed font sizes,.font(.body) with Dynamic Type,.font(.system(size: 16)),High,
 44,Accessibility,Use semantic views,Proper accessibility traits,Correct accessibilityTraits,Wrong semantic meaning,Button for actions Image for display,Image that acts like button,Medium,
 45,Testing,Use ViewInspector for testing,Third-party view testing,ViewInspector for unit tests,UI tests only,ViewInspector assertions,Only XCUITest,Medium,
