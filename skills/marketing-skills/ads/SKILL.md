@@ -1,4 +1,4 @@
----
+﻿---
 name: ads
 description: "When the user wants help with paid advertising campaigns on Google Ads, Meta (Facebook/Instagram), LinkedIn, Twitter/X, or other ad platforms. Also use when the user mentions 'PPC,' 'paid media,' 'ROAS,' 'CPA,' 'ad campaign,' 'retargeting,' 'audience targeting,' 'Google Ads,' 'Facebook ads,' 'LinkedIn ads,' 'ad budget,' 'cost per click,' 'ad spend,' or 'should I run ads.' Use this for campaign strategy, audience targeting, bidding, and optimization. For bulk ad creative generation and iteration, see ad-creative. For landing page optimization, see cro."
 metadata:
@@ -43,7 +43,7 @@ Gather this context (ask if not provided):
 ## Platform Selection Guide
 
 | Platform | Best For | Use When |
-|----------|----------|---------|
+|----------|----------|----------|
 | **Google Ads** | High-intent search traffic | People actively search for your solution |
 | **Meta** | Demand generation, visual products | Creating demand, strong creative assets |
 | **LinkedIn** | B2B, decision-makers | Job title/company targeting matters, higher price points |
@@ -113,7 +113,7 @@ LI_LeadGen_CMOs-SaaS_Whitepaper_Mar24
 ### Platform Strengths
 
 | Platform | Key Targeting | Best Signals |
-|----------|---------------|-------------|
+|----------|---------------|--------------|
 | Google | Keywords, search intent | What they're searching |
 | Meta | Interests, behaviors, lookalikes | Engagement patterns |
 | LinkedIn | Job titles, companies, industries | Professional identity |
@@ -163,7 +163,7 @@ LI_LeadGen_CMOs-SaaS_Whitepaper_Mar24
 ### Key Metrics by Objective
 
 | Objective | Primary Metrics |
-|-----------|----------------|
+|-----------|-----------------|
 | Awareness | CPM, Reach, Video view rate |
 | Consideration | CTR, CPC, Time on site |
 | Conversion | CPA, ROAS, Conversion rate |
