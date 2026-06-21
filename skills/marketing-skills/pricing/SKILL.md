@@ -1,4 +1,4 @@
----
+﻿---
 name: pricing
 description: "When the user wants help with pricing decisions, packaging, or monetization strategy. Also use when the user mentions 'pricing,' 'pricing tiers,' 'freemium,' 'free trial,' 'packaging,' 'price increase,' 'value metric,' 'Van Westendorp,' 'willingness to pay,' 'monetization,' 'how much should I charge,' 'my pricing is wrong,' 'pricing page,' 'annual vs monthly,' 'per seat pricing,' or 'should I offer a free plan.' Use this whenever someone is figuring out what to charge or how to structure their plans. For in-app upgrade screens, see paywalls."
 metadata:
@@ -12,28 +12,74 @@ You are an expert in SaaS pricing and monetization strategy. Your goal is to hel
 ## Before Starting
 
 **Check for product marketing context first:**
-If `.agents/product-marketing.md` exists (or `.claude/product-marketing.md`, or the legacy `product-marketing-context.md` filename), read it before asking questions.
+If `.agents/product-marketing.md` exists (or `.claude/product-marketing.md`, or the legacy `product-marketing-context.md` filename, in older setups), read it before asking questions. Use that context and only ask for information not already covered or specific to this task.
+
+Gather this context (ask if not provided):
+
+### 1. Business Context
+- What type of product? (SaaS, marketplace, e-commerce, service)
+- What's your current pricing (if any)?
+- What's your target market? (SMB, mid-market, enterprise)
+- What's your go-to-market motion? (self-serve, sales-led, hybrid)
+
+### 2. Value & Competition
+- What's the primary value you deliver?
+- What alternatives do customers consider?
+- How do competitors price?
+
+### 3. Current Performance
+- What's your current conversion rate?
+- What's your ARPU and churn rate?
+- Any feedback on pricing from customers/prospects?
+
+### 4. Goals
+- Optimizing for growth, revenue, or profitability?
+- Moving upmarket or expanding downmarket?
 
 ---
 
 ## Pricing Fundamentals
 
 ### The Three Pricing Axes
-1. **Packaging** — What's included at each tier (features, limits, support level)
-2. **Pricing Metric** — What you charge for (per user, per usage, flat fee)
-3. **Price Point** — The actual dollar amounts
+
+**1. Packaging** — What's included at each tier?
+- Features, limits, support level
+- How tiers differ from each other
+
+**2. Pricing Metric** — What do you charge for?
+- Per user, per usage, flat fee
+- How price scales with value
+
+**3. Price Point** — How much do you charge?
+- The actual dollar amounts
+- Perceived value vs. cost
 
 ### Value-Based Pricing
+
+Price should be based on value delivered, not cost to serve:
+
 - **Customer's perceived value** — The ceiling
 - **Your price** — Between alternatives and perceived value
 - **Next best alternative** — The floor for differentiation
 - **Your cost to serve** — Only a baseline, not the basis
 
+**Key insight:** Price between the next best alternative and perceived value.
+
 ---
 
 ## Value Metrics
 
-The value metric is what you charge for — it should scale with the value customers receive.
+### What is a Value Metric?
+
+The value metric is what you charge for—it should scale with the value customers receive.
+
+**Good value metrics:**
+- Align price with value delivered
+- Are easy to understand
+- Scale as customer grows
+- Are hard to game
+
+### Common Value Metrics
 
 | Metric | Best For | Example |
 |--------|----------|---------|
@@ -44,23 +90,38 @@ The value metric is what you charge for — it should scale with the value custo
 | Per transaction | Payments, marketplaces | Stripe |
 | Flat fee | Simple products | Basecamp |
 
-**Choose wisely:** Ask "As a customer uses more of [metric], do they get more value?" If yes → good value metric.
+### Choosing Your Value Metric
+
+Ask: "As a customer uses more of [metric], do they get more value?"
+- If yes → good value metric
+- If no → price doesn't align with value
 
 ---
 
-## Tier Structure: Good-Better-Best
+## Tier Structure Overview
 
-- **Good (Entry):** Core features, limited usage, low price
-- **Better (Recommended):** Full features, reasonable limits, anchor price
-- **Best (Premium):** Everything, advanced features, 2-3× Better price
+### Good-Better-Best Framework
 
-**Tier differentiation:** Feature gating, usage limits, support level (email → priority → dedicated), access (API, SSO, custom branding).
+**Good tier (Entry):** Core features, limited usage, low price
+**Better tier (Recommended):** Full features, reasonable limits, anchor price
+**Best tier (Premium):** Everything, advanced features, 2-3x Better price
+
+### Tier Differentiation
+
+- **Feature gating** — Basic vs. advanced features
+- **Usage limits** — Same features, different limits
+- **Support level** — Email → Priority → Dedicated
+- **Access** — API, SSO, custom branding
+
+**For detailed tier structures and persona-based packaging**: See [references/tier-structure.md](references/tier-structure.md)
 
 ---
 
 ## Pricing Research
 
-**Van Westendorp Method** — Four questions:
+### Van Westendorp Method
+
+Four questions that identify acceptable price range:
 1. Too expensive (wouldn't consider)
 2. Too cheap (question quality)
 3. Expensive but might consider
@@ -68,36 +129,103 @@ The value metric is what you charge for — it should scale with the value custo
 
 Analyze intersections to find optimal pricing zone.
 
-**MaxDiff Analysis** — Identifies which features customers value most for packaging decisions.
+### MaxDiff Analysis
+
+Identifies which features customers value most:
+- Show sets of features
+- Ask: Most important? Least important?
+- Results inform tier packaging
+
+**For detailed research methods**: See [references/research-methods.md](references/research-methods.md)
 
 ---
 
 ## When to Raise Prices
 
-**Market signals:** Competitors raised prices, prospects don't flinch, "It's so cheap!" feedback.
+### Signs It's Time
 
-**Business signals:** Very high conversion (>40%), very low churn (<3% monthly), strong unit economics.
+**Market signals:**
+- Competitors have raised prices
+- Prospects don't flinch at price
+- "It's so cheap!" feedback
 
-**Strategies:** Grandfather existing customers | Announce 3-6 months out | Tie to added value | Plan restructure.
+**Business signals:**
+- Very high conversion rates (>40%)
+- Very low churn (<3% monthly)
+- Strong unit economics
+
+**Product signals:**
+- Significant value added since last pricing
+- Product more mature/stable
+
+### Price Increase Strategies
+
+1. **Grandfather existing** — New price for new customers only
+2. **Delayed increase** — Announce 3-6 months out
+3. **Tied to value** — Raise price but add features
+4. **Plan restructure** — Change plans entirely
 
 ---
 
 ## Pricing Page Best Practices
 
-**Above the fold:** Clear tier comparison table, recommended tier highlighted, monthly/annual toggle, primary CTA per tier.
+### Above the Fold
+- Clear tier comparison table
+- Recommended tier highlighted
+- Monthly/annual toggle
+- Primary CTA for each tier
 
-**Common elements:** Feature comparison table, FAQ, annual discount callout (17-20%), money-back guarantee, customer logos.
+### Common Elements
+- Feature comparison table
+- Who each tier is for
+- FAQ section
+- Annual discount callout (17-20%)
+- Money-back guarantee
+- Customer logos/trust signals
 
-**Psychology:** Anchoring (show higher-priced option first), Decoy effect (middle tier = best value), Charm pricing ($49 for value-focused), Round pricing ($50 for premium).
+### Pricing Psychology
+- **Anchoring:** Show higher-priced option first
+- **Decoy effect:** Middle tier should be best value
+- **Charm pricing:** $49 vs. $50 (for value-focused)
+- **Round pricing:** $50 vs. $49 (for premium)
+
+---
+
+## Pricing Checklist
+
+### Before Setting Prices
+- [ ] Defined target customer personas
+- [ ] Researched competitor pricing
+- [ ] Identified your value metric
+- [ ] Conducted willingness-to-pay research
+- [ ] Mapped features to tiers
+
+### Pricing Structure
+- [ ] Chosen number of tiers
+- [ ] Differentiated tiers clearly
+- [ ] Set price points based on research
+- [ ] Created annual discount strategy
+- [ ] Planned enterprise/custom tier
+
+---
+
+## Task-Specific Questions
+
+1. What pricing research have you done?
+2. What's your current ARPU and conversion rate?
+3. What's your primary value metric?
+4. Who are your main pricing personas?
+5. Are you self-serve, sales-led, or hybrid?
+6. What pricing changes are you considering?
 
 ---
 
 ## Related Skills
 
-- **churn-prevention**: For cancel flows and reducing revenue churn
+- **churn-prevention**: For cancel flows, save offers, and reducing revenue churn
 - **cro**: For optimizing pricing page conversion
 - **copywriting**: For pricing page copy
 - **marketing-psychology**: For pricing psychology principles
-- **paywalls**: For in-app upgrade screens
 - **ab-testing**: For testing pricing changes
-- **revops**: For deal desk and pipeline pricing
+- **revops**: For deal desk processes and pipeline pricing
+- **sales-enablement**: For proposal templates and pricing presentations
