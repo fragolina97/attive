@@ -113,7 +113,9 @@ Write a JSON file with this structure:
   "instruction_following": {
     "winner": {
       "score": 9,
-      "issues": ["Minor: skipped optional logging step"]
+      "issues": [
+        "Minor: skipped optional logging step"
+      ]
     },
     "loser": {
       "score": 6,
@@ -160,6 +162,25 @@ Write a JSON file with this structure:
 - **Consider causation**: Did the skill weakness actually cause the worse output, or is it incidental?
 - **Stay objective**: Analyze what happened, don't editorialize
 - **Think about generalization**: Would this improvement help on other evals too?
+
+## Categories for Suggestions
+
+Use these categories to organize improvement suggestions:
+
+| Category | Description |
+|----------|-------------|
+| `instructions` | Changes to the skill's prose instructions |
+| `tools` | Scripts, templates, or utilities to add/modify |
+| `examples` | Example inputs/outputs to include |
+| `error_handling` | Guidance for handling failures |
+| `structure` | Reorganization of skill content |
+| `references` | External docs or resources to add |
+
+## Priority Levels
+
+- **high**: Would likely change the outcome of this comparison
+- **medium**: Would improve quality but may not change win/loss
+- **low**: Nice to have, marginal improvement
 
 ---
 
@@ -227,7 +248,16 @@ Examples:
 
 ### Step 6: Write Notes
 
-Save notes to `{output_path}` as a JSON array of strings.
+Save notes to `{output_path}` as a JSON array of strings:
+
+```json
+[
+  "Assertion 'Output is a PDF file' passes 100% in both configurations - may not differentiate skill value",
+  "Eval 3 shows high variance (50% ± 40%) - run 2 had an unusual failure",
+  "Without-skill runs consistently fail on table extraction expectations",
+  "Skill adds 13s average execution time but improves pass rate by 50%"
+]
+```
 
 ## Guidelines
 
