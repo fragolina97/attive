@@ -1,4 +1,4 @@
----
+﻿---
 name: ab-testing
 description: When the user wants to plan, design, or implement an A/B test or experiment, or build a growth experimentation program. Also use when the user mentions "A/B test," "split test," "experiment," "test this change," "variant copy," "multivariate test," "hypothesis," "should I test this," "which version is better," "test two versions," "statistical significance," "how long should I run this test," "growth experiments," "experiment velocity," "experiment backlog," "ICE score," "experimentation program," or "experiment playbook." Use this whenever someone is comparing two approaches and wants to measure which performs better, or when they want to build a systematic experimentation practice. For tracking implementation, see analytics. For page-level conversion optimization, see cro.
 metadata:
@@ -122,7 +122,7 @@ We'll know this is true when [metrics].
 ### What to Vary
 
 | Category | Examples |
-|----------|---------|
+|----------|----------|
 | Headlines/Copy | Message angle, value prop, specificity, tone |
 | Visual Design | Layout, color, images, hierarchy |
 | CTA | Button copy, size, placement, number |
@@ -250,7 +250,7 @@ Individual tests are valuable. A continuous experimentation program is a compoun
 Feed your experiment backlog from multiple sources:
 
 | Source | What to Look For |
-|--------|------------------|
+|--------|-----------------|
 | Analytics | Drop-off points, low-converting pages, underperforming segments |
 | Customer research | Pain points, confusion, unmet expectations |
 | Competitor analysis | Features, messaging, or UX patterns they use that you don't |
