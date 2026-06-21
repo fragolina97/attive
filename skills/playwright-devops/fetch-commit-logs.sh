@@ -1,4 +1,4 @@
-#!/bin/bash
+﻿#!/bin/bash
 set -euo pipefail
 
 # Usage: fetch-commit-logs.sh [<sha>]
@@ -37,7 +37,7 @@ fi
 echo "Found $FAILED_COUNT failed workflow(s). Fetching failed jobs..."
 
 # Build summary and collect jobs to fetch
-SUMMARY='{"sha":"'"$SHA"'","short_sha":"'"$SHORT_SHA"'","message":'$(echo "$MESSAGE" | jq -Rs .)',"workflows":[]}'
+SUMMARY='{"sha":"'"$SHA"'","short_sha":"'"$SHORT_SHA"'","message":'"$(echo "$MESSAGE" | jq -Rs .)"',"workflows":[]}'
 
 sanitize() {
   echo "$1" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9._-]/-/g' | sed 's/--*/-/g' | sed 's/^-//;s/-$//'
@@ -82,7 +82,7 @@ for i in $(seq 0 $((FAILED_COUNT - 1))); do
       echo "# $JOB_NAME" > "$LOG_PATH"
       echo "" >> "$LOG_PATH"
       gh run view --job "$JOB_ID" --log-failed 2>&1 | sed 's/\x1b\[[0-9;]*[a-zA-Z]//g' | sed $'s/^[^\t]*\t[^\t]*\t\xef\xbb\xbf\{0,1\}[0-9T:.Z-]* //' >> "$LOG_PATH" || true
-      # If only header, fetch via jobs API
+      # If only header (e.g. workflow still in progress), fetch via jobs API
       if [ "$(wc -l < "$LOG_PATH")" -le 3 ]; then
         echo "# $JOB_NAME" > "$LOG_PATH"
         echo "" >> "$LOG_PATH"
