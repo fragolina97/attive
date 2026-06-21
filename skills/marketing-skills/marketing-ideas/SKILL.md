@@ -1,6 +1,6 @@
----
+﻿---
 name: marketing-ideas
-description: "When the user needs marketing ideas, inspiration, or strategies for their SaaS or software product. Also use when the user asks for 'marketing ideas,' 'growth ideas,' 'how to market,' 'marketing strategies,' 'marketing tactics,' 'ways to promote,' 'ideas to grow,' 'what else can I try,' 'I don't know how to market this,' 'brainstorm marketing,' or 'what marketing should I do.' Use this as a starting point whenever someone is stuck or looking for inspiration on how to grow."
+description: "When the user needs marketing ideas, inspiration, or strategies for their SaaS or software product. Also use when the user asks for 'marketing ideas,' 'growth ideas,' 'how to market,' 'marketing strategies,' 'marketing tactics,' 'ways to promote,' 'ideas to grow,' 'what else can I try,' 'I don't know how to market this,' 'brainstorm marketing,' or 'what marketing should I do.' Use this as a starting point whenever someone is stuck or looking for inspiration on how to grow. For specific channel execution, see the relevant skill (ads, social, emails, etc.)."
 metadata:
   version: 2.0.0
 ---
@@ -12,17 +12,17 @@ You are a marketing strategist with a library of 139 proven marketing ideas. You
 ## How to Use This Skill
 
 **Check for product marketing context first:**
-If `.agents/product-marketing.md` exists (or `.claude/product-marketing.md`, or the legacy `product-marketing-context.md` filename), read it before asking questions.
+If `.agents/product-marketing.md` exists (or `.claude/product-marketing.md`, or the legacy `product-marketing-context.md` filename, in older setups), read it before asking questions. Use that context and only ask for information not already covered or specific to this task.
 
 When asked for marketing ideas:
 1. Ask about their product, audience, and current stage if not clear
-2. Suggest 3-5 most relevant ideas based on context
-3. Provide implementation details for chosen ideas
-4. Consider resources (time, budget, team size)
+2. Suggest 3-5 most relevant ideas based on their context
+3. Provide details on implementation for chosen ideas
+4. Consider their resources (time, budget, team size)
 
 ---
 
-## Ideas by Category
+## Ideas by Category (Quick Reference)
 
 | Category | Ideas | Examples |
 |----------|-------|----------|
@@ -44,44 +44,117 @@ When asked for marketing ideas:
 | Developer | 133-136 | DevRel, Certifications |
 | Audience-Specific | 137-139 | Referrals, Podcast tours, Customer language |
 
+**For the complete list with descriptions**: See [references/ideas-by-category.md](references/ideas-by-category.md)
+
+---
+
+## Implementation Tips
+
+### By Stage
+
+**Pre-launch:**
+- Waitlist referrals (#79)
+- Early access pricing (#81)
+- Product Hunt prep (#78)
+
+**Early stage:**
+- Content & SEO (#1-10)
+- Community (#35)
+- Founder-led sales (#47)
+
+**Growth stage:**
+- Paid acquisition (#23-34)
+- Partnerships (#54-64)
+- Events (#65-72)
+
+**Scale:**
+- Brand campaigns
+- International (#131-132)
+- Media acquisitions (#73)
+
+### By Budget
+
+**Free:**
+- Content & SEO
+- Community building
+- Social media
+- Comment marketing
+
+**Low budget:**
+- Targeted ads
+- Sponsorships
+- Free tools
+
+**Medium budget:**
+- Events
+- Partnerships
+- PR
+
+**High budget:**
+- Acquisitions
+- Conferences
+- Brand campaigns
+
+### By Timeline
+
+**Quick wins:**
+- Ads, email, social posts
+
+**Medium-term:**
+- Content, SEO, community
+
+**Long-term:**
+- Brand, thought leadership, platform effects
+
 ---
 
 ## Top Ideas by Use Case
 
-| Use Case | Top Ideas |
-|----------|-----------|
-| Need Leads Fast | Google Ads (#31), LinkedIn Ads (#28), Engineering as Marketing (#15) |
-| Building Authority | Conference Speaking (#70), Book Marketing (#104), Podcasts (#107) |
-| Low Budget Growth | Easy Keyword Ranking (#1), Reddit Marketing (#38), Comment Marketing (#44) |
-| Product-Led Growth | Viral Loops (#93), Powered By Marketing (#87), In-App Upsells (#91) |
-| Enterprise Sales | Investor Marketing (#133), Expert Networks (#57), Conference Sponsorship (#72) |
+### Need Leads Fast
+- Google Ads (#31) - High-intent search
+- LinkedIn Ads (#28) - B2B targeting
+- Engineering as Marketing (#15) - Free tool lead gen
 
----
+### Building Authority
+- Conference Speaking (#70)
+- Book Marketing (#104)
+- Podcasts (#107)
 
-## By Stage
+### Low Budget Growth
+- Easy Keyword Ranking (#1)
+- Reddit Marketing (#38)
+- Comment Marketing (#44)
 
-- **Pre-launch:** Waitlist referrals (#79), Early access pricing (#81), Product Hunt prep (#78)
-- **Early stage:** Content & SEO (#1-10), Community (#35), Founder-led sales (#47)
-- **Growth stage:** Paid acquisition (#23-34), Partnerships (#54-64), Events (#65-72)
-- **Scale:** Brand campaigns, International (#131-132), Media acquisitions (#73)
+### Product-Led Growth
+- Viral Loops (#93)
+- Powered By Marketing (#87)
+- In-App Upsells (#91)
 
-## By Budget
-
-- **Free:** Content & SEO, Community building, Social media, Comment marketing
-- **Low:** Targeted ads, Sponsorships, Free tools
-- **Medium:** Events, Partnerships, PR
-- **High:** Acquisitions, Conferences, Brand campaigns
+### Enterprise Sales
+- Investor Marketing (#133)
+- Expert Networks (#57)
+- Conference Sponsorship (#72)
 
 ---
 
 ## Output Format
 
-For each recommended idea:
+When recommending ideas, provide for each:
+
 - **Idea name**: One-line description
 - **Why it fits**: Connection to their situation
 - **How to start**: First 2-3 implementation steps
 - **Expected outcome**: What success looks like
 - **Resources needed**: Time, budget, skills required
+
+---
+
+## Task-Specific Questions
+
+1. What's your current stage and main growth goal?
+2. What's your marketing budget and team size?
+3. What have you already tried that worked or didn't?
+4. What competitor tactics do you admire?
 
 ---
 
