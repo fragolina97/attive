@@ -90,6 +90,8 @@ Skills use a three-level loading system:
 2. **SKILL.md body** - In context whenever skill triggers (<500 lines ideal)
 3. **Bundled resources** - As needed (unlimited, scripts can execute without loading)
 
+These word counts are approximate and you can feel free to go longer if needed.
+
 **Key patterns:**
 - Keep SKILL.md under 500 lines; if you're approaching this limit, add an additional layer of hierarchy along with clear pointers about where the model using the skill should go next to follow up.
 - Reference files clearly from SKILL.md with guidance on when to read them
@@ -247,6 +249,20 @@ Put each with_skill version before its baseline counterpart.
 Note: please use generate_review.py to create the viewer; there's no need to write custom HTML.
 
 5. **Tell the user** something like: "I've opened the results in your browser. There are two tabs — 'Outputs' lets you click through each test case and leave feedback, 'Benchmark' shows the quantitative comparison. When you're done, come back here and let me know."
+
+### What the user sees in the viewer
+
+The "Outputs" tab shows one test case at a time:
+- **Prompt**: the task that was given
+- **Output**: the files the skill produced, rendered inline where possible
+- **Previous Output** (iteration 2+): collapsed section showing last iteration's output
+- **Formal Grades** (if grading was run): collapsed section showing assertion pass/fail
+- **Feedback**: a textbox that auto-saves as they type
+- **Previous Feedback** (iteration 2+): their comments from last time, shown below the textbox
+
+The "Benchmark" tab shows the stats summary: pass rates, timing, and token usage for each configuration, with per-eval breakdowns and analyst observations.
+
+Navigation is via prev/next buttons or arrow keys. When done, they click "Submit All Reviews" which saves all feedback to `feedback.json`.
 
 ### Step 5: Read the feedback
 
