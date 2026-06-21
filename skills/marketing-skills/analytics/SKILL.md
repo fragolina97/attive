@@ -1,4 +1,4 @@
----
+﻿---
 name: analytics
 description: When the user wants to set up, improve, or audit analytics tracking and measurement. Also use when the user mentions "set up tracking," "GA4," "Google Analytics," "conversion tracking," "event tracking," "UTM parameters," "tag manager," "GTM," "analytics implementation," "tracking plan," "how do I measure this," "track conversions," "attribution," "Mixpanel," "Segment," "are my events firing," or "analytics isn't working." Use this whenever someone asks how to know if something is working or wants to measure marketing results. For A/B test measurement, see ab-testing.
 metadata:
@@ -160,7 +160,7 @@ gtag('event', 'signup_completed', {
 ### Container Structure
 
 | Component | Purpose |
-|-----------|----------|
+|-----------|---------|
 | Tags | Code that executes (GA4, pixels) |
 | Triggers | When tags fire (page view, click) |
 | Variables | Dynamic values (click text, data layer) |
@@ -184,7 +184,7 @@ dataLayer.push({
 ### Standard Parameters
 
 | Parameter | Purpose | Example |
-|-----------|---------|--------|
+|-----------|---------|---------|
 | utm_source | Traffic source | google, newsletter |
 | utm_medium | Marketing medium | cpc, email, social |
 | utm_campaign | Campaign name | spring_sale |
@@ -204,7 +204,7 @@ dataLayer.push({
 ### Testing Tools
 
 | Tool | Use For |
-|------|--------|
+|------|---------|
 | GA4 DebugView | Real-time event monitoring |
 | GTM Preview Mode | Test triggers before publish |
 | Browser Extensions | Tag Assistant, dataLayer Inspector |
