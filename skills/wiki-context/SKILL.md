@@ -1,11 +1,12 @@
----
-name: wiki-context
-description: Carica il contesto completo della wiki 2Brain e risponde con piena consapevolezza della knowledge base. Usa quando hai bisogno di contesto completo prima di rispondere, stai pianificando qualcosa connesso a progetti esistenti, vuoi sapere cosa sa già la wiki su un argomento.
----
-
 # Wiki Context Loader
 
 Carica il contesto completo della wiki e rispondi con piena consapevolezza della knowledge base.
+
+## Quando usare
+Invoca `/wiki-context` quando:
+- Hai bisogno di contesto completo prima di rispondere
+- Stai pianificando qualcosa connesso a progetti esistenti
+- Vuoi sapere cosa sa già la wiki su un argomento
 
 ## Procedura
 
