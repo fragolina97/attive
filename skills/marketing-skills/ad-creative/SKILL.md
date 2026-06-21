@@ -1,4 +1,4 @@
----
+﻿---
 name: ad-creative
 description: "When the user wants to generate, iterate, or scale ad creative — headlines, descriptions, primary text, or full ad variations — for any paid advertising platform. Also use when the user mentions 'ad copy variations,' 'ad creative,' 'generate headlines,' 'RSA headlines,' 'bulk ad copy,' 'ad iterations,' 'creative testing,' 'ad performance optimization,' 'write me some ads,' 'Facebook ad copy,' 'Google ad headlines,' 'LinkedIn ad text,' or 'I need more ad variations.' Use this whenever someone needs to produce ad copy at scale or iterate on existing ads. For campaign strategy and targeting, see ads. For landing page copy, see copywriting."
 metadata:
@@ -325,6 +325,31 @@ For large-scale creative production (Anthropic's growth team generates 100+ vari
 - **Iterating without data** — Gut feelings are less reliable than metrics
 - **Testing too many things at once** — Change one variable per test cycle
 - **Retiring creative too early** — Allow 1,000+ impressions before judging
+
+---
+
+## Tool Integrations
+
+For pulling performance data and managing campaigns, see the [tools registry](../../tools/REGISTRY.md).
+
+| Platform | Pull Performance Data | Manage Campaigns | Guide |
+|----------|:---------------------:|:----------------:|-------|
+| **Google Ads** | `google-ads campaigns list`, `google-ads reports get` | `google-ads campaigns create` | [google-ads.md](../../tools/integrations/google-ads.md) |
+| **Meta Ads** | `meta-ads insights get` | `meta-ads campaigns list` | [meta-ads.md](../../tools/integrations/meta-ads.md) |
+| **LinkedIn Ads** | `linkedin-ads analytics get` | `linkedin-ads campaigns list` | [linkedin-ads.md](../../tools/integrations/linkedin-ads.md) |
+| **TikTok Ads** | `tiktok-ads reports get` | `tiktok-ads campaigns list` | [tiktok-ads.md](../../tools/integrations/tiktok-ads.md) |
+
+### Workflow: Pull Data, Analyze, Generate
+
+```bash
+# 1. Pull recent ad performance
+node tools/clis/google-ads.js reports get --type ad_performance --date-range last_30_days
+
+# 2. Analyze output (identify top/bottom performers)
+# 3. Feed winning patterns into this skill
+# 4. Generate new variations
+# 5. Upload to platform
+```
 
 ---
 
