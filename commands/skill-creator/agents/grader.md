@@ -56,6 +56,8 @@ Beyond the predefined expectations, extract implicit claims from the outputs and
 
 3. **Flag unverifiable claims**: Note claims that cannot be verified with available information
 
+This catches issues that predefined expectations might miss.
+
 ### Step 5: Read User Notes
 
 If `{outputs_dir}/user_notes.md` exists:
@@ -85,16 +87,21 @@ Save results to `{outputs_dir}/../grading.json` (sibling to outputs_dir).
 **PASS when**:
 - The transcript or outputs clearly demonstrate the expectation is true
 - Specific evidence can be cited
-- The evidence reflects genuine substance, not just surface compliance
+- The evidence reflects genuine substance, not just surface compliance (e.g., a file exists AND contains correct content, not just the right filename)
 
 **FAIL when**:
 - No evidence found for the expectation
 - Evidence contradicts the expectation
 - The expectation cannot be verified from available information
-- The evidence is superficial — the assertion is technically satisfied but the underlying task outcome is wrong
+- The evidence is superficial — the assertion is technically satisfied but the underlying task outcome is wrong or incomplete
 - The output appears to meet the assertion by coincidence rather than by actually doing the work
 
 **When uncertain**: The burden of proof to pass is on the expectation.
+
+### Step 8: Read Executor Metrics and Timing
+
+1. If `{outputs_dir}/metrics.json` exists, read it and include in grading output
+2. If `{outputs_dir}/../timing.json` exists, read it and include timing data
 
 ## Output Format
 
@@ -112,6 +119,11 @@ Write a JSON file with this structure:
       "text": "The spreadsheet has a SUM formula in cell B10",
       "passed": false,
       "evidence": "No spreadsheet was created. The output was a text file."
+    },
+    {
+      "text": "The assistant used the skill's OCR script",
+      "passed": true,
+      "evidence": "Transcript Step 2 shows: 'Tool: Bash - python ocr_script.py image.png'"
     }
   ],
   "summary": {
@@ -121,7 +133,11 @@ Write a JSON file with this structure:
     "pass_rate": 0.67
   },
   "execution_metrics": {
-    "tool_calls": { "Read": 5, "Write": 2, "Bash": 8 },
+    "tool_calls": {
+      "Read": 5,
+      "Write": 2,
+      "Bash": 8
+    },
     "total_tool_calls": 15,
     "total_steps": 6,
     "errors_encountered": 0,
@@ -139,19 +155,63 @@ Write a JSON file with this structure:
       "type": "factual",
       "verified": true,
       "evidence": "Counted 12 fields in field_info.json"
+    },
+    {
+      "claim": "All required fields were populated",
+      "type": "quality",
+      "verified": false,
+      "evidence": "Reference section was left blank despite data being available"
     }
   ],
+  "user_notes_summary": {
+    "uncertainties": ["Used 2023 data, may be stale"],
+    "needs_review": [],
+    "workarounds": ["Fell back to text overlay for non-fillable fields"]
+  },
   "eval_feedback": {
     "suggestions": [
       {
         "assertion": "The output includes the name 'John Smith'",
-        "reason": "A hallucinated document that mentions the name would also pass — consider checking it appears as the primary contact"
+        "reason": "A hallucinated document that mentions the name would also pass — consider checking it appears as the primary contact with matching phone and email from the input"
+      },
+      {
+        "reason": "No assertion checks whether the extracted phone numbers match the input — I observed incorrect numbers in the output that went uncaught"
       }
     ],
     "overall": "Assertions check presence but not correctness. Consider adding content verification."
   }
 }
 ```
+
+## Field Descriptions
+
+- **expectations**: Array of graded expectations
+  - **text**: The original expectation text
+  - **passed**: Boolean - true if expectation passes
+  - **evidence**: Specific quote or description supporting the verdict
+- **summary**: Aggregate statistics
+  - **passed**: Count of passed expectations
+  - **failed**: Count of failed expectations
+  - **total**: Total expectations evaluated
+  - **pass_rate**: Fraction passed (0.0 to 1.0)
+- **execution_metrics**: Copied from executor's metrics.json (if available)
+  - **output_chars**: Total character count of output files (proxy for tokens)
+  - **transcript_chars**: Character count of transcript
+- **timing**: Wall clock timing from timing.json (if available)
+  - **executor_duration_seconds**: Time spent in executor subagent
+  - **total_duration_seconds**: Total elapsed time for the run
+- **claims**: Extracted and verified claims from the output
+  - **claim**: The statement being verified
+  - **type**: "factual", "process", or "quality"
+  - **verified**: Boolean - whether the claim holds
+  - **evidence**: Supporting or contradicting evidence
+- **user_notes_summary**: Issues flagged by the executor
+  - **uncertainties**: Things the executor wasn't sure about
+  - **needs_review**: Items requiring human attention
+  - **workarounds**: Places where the skill didn't work as expected
+- **eval_feedback**: Improvement suggestions for the evals (only when warranted)
+  - **suggestions**: List of concrete suggestions, each with a `reason` and optionally an `assertion` it relates to
+  - **overall**: Brief assessment — can be "No suggestions, evals look solid" if nothing to flag
 
 ## Guidelines
 
