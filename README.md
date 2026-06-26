@@ -50,6 +50,9 @@ bash install.sh
 | **ui-ux-pro-max** | Design intelligence: 67 stili, 96 palette, 57 font, 25 chart, 13 stack |
 | **wiki-context** | Carica contesto wiki 2Brain prima di rispondere |
 | **marketing-skills v2.2.0** | Suite completa: 42 skill di marketing (SEO, ads, email, CRO, analytics...) |
+| **handoff** | Genera handoff.md per passare contesto tra sessioni — scope isolation, evidence policy, next step validation. Attivare con `/handoff` |
+| **inkos-grounding-v2** | InkOS grounding layer: valuta contesto 2Brain, calcola source context score (HybridRetrievalFusion), gestisce approval session prima della scrittura |
+| **inkos-multi-agent-novel-writing** | Sistema multi-agente per scrittura autonoma di romanzi (5 agenti: Architect→Writer→Validator→Auditor→Reviser), generi xuanhuan/xianxia/dushi/horror, AIGC detection |
 
 ### Marketing Skills Incluse (42 skill)
 
@@ -75,8 +78,11 @@ attive/
     ├── playwright-devops/
     ├── ui-ux-pro-max/
     ├── wiki-context/
-    └── marketing-skills/
-        └── ... (42 sub-skill)
+    ├── marketing-skills/
+    │   └── ... (42 sub-skill)
+    ├── handoff/
+    ├── inkos-grounding-v2/
+    └── inkos-multi-agent-novel-writing/
 ```
 
 ## Note
@@ -85,3 +91,5 @@ attive/
 - Le skill in `skills/` vengono caricate automaticamente in base alla loro `description` YAML
 - Per `ui-ux-pro-max` è richiesto **Python 3** per gli script del design system
 - Per `deep-research` e `wiki-context` è necessario configurare il vault `2Brain/` nel proprio workspace
+- Per `inkos-multi-agent-novel-writing` è richiesto **Node.js ≥ 20** e `npm install -g @actalk/inkos`; configurare `~/.inkos/config.json` con la propria API key
+- Per `inkos-grounding-v2` è necessario il vault `2Brain/` — usare prima di `inkos` per progetti basati su fonti reali
